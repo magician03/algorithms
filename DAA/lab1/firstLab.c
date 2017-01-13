@@ -78,7 +78,7 @@ void hybridSort(int *arr, int n)
 
 	int i = 0;
 	for ( i = 0 ; i < n; i++)
-		arr[i] = rand() % 100000;
+		arr[i] = rand();
 		 
 	int k = 0;
 	for(k = 2; k < 100; k++){
