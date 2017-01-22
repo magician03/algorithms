@@ -24,19 +24,22 @@ int partition(int arr[], int low, int high) {
 		if(arr[i] < pivot){
 			//swap A[j], A[i]
 			int temp;
+			pivotIndex+= 1;
 			temp = arr[pivotIndex];
 			arr[pivotIndex] = arr[i];
 			arr[i] = temp;
-			pivotIndex+= 1;
+			
 		}
 
 	}
 
 	int temp;
+	pivotIndex += 1;
 	temp = arr[pivotIndex];
 	arr[pivotIndex] = arr[high];
 	arr[high] = temp;
-	pivotIndex += 1;
+	
+	
 
 	return pivotIndex;
 
@@ -51,7 +54,7 @@ void quickSort(int arr[], int low, int high, int k)  {
 		pivot = partition(arr, low, high);
 		quickSort(arr, low, pivot - 1, k);
 		quickSort(arr, pivot+1, high, k);
-	} else {
+	} else if( high > low) {
 		// proceed to bubble sort
 		int i,j,k;
 		for(i = low; i <= high; i++){
@@ -64,6 +67,9 @@ void quickSort(int arr[], int low, int high, int k)  {
 				}
 			}
 		}
+		return;
+	} else {
+		return;
 	}
 }
 
@@ -78,7 +84,7 @@ void hybridSort(int *arr, int n)
 
 	int i = 0;
 	for ( i = 0 ; i < n; i++)
-		arr[i] = 10*i;
+		arr[i] = rand()%1000;
 		 
 	int k = 0;
 	for(k = 2; k < 100; k++){
@@ -96,11 +102,12 @@ void hybridSort(int *arr, int n)
 		//For random input use the following code
 
 		//arr[i] = rand();
-
+		
 
 		//output should be printed in the following way for each k.
-		 double tt = end-begin;
-		printf("%d,%d\n",k,tt);
+		 double tt = (double)(end-begin);
+		 tt /= CLOCKS_PER_SEC;
+		printf("%d,%lf\n",k,tt);
 
 	}
 
