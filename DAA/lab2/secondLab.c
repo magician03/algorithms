@@ -11,6 +11,8 @@ int extract_MAX(int *,int*, int);
 void insert(int *,int*,int,int);
 void change(int *,int,int,int,int);
 void print(int *, int);
+void heapSort(int *, int, int);
+
 int main()
 {
   char ch=' ';
@@ -26,6 +28,8 @@ int main()
     build_MAX_heap(arr,n,k);
 
    print(arr, n);
+	 //heapSort(arr, n, k);
+	 //print(arr, n);
   do
     {
       while(getchar()!='\n'); /* To clear the buffer of any leftover characters*/
@@ -49,6 +53,10 @@ int main()
 	  change(arr,n,k,i,new);
 	  print(arr, n);
 	  break;
+	case 's':
+	printf("sorting array\n");
+	heapSort(arr, n ,k);
+	print(arr, n);
 	}
     }while(ch!='q');
   return 0;
@@ -176,5 +184,24 @@ void change(int arr[],int n,int k,int i,int new)
 		max_Heapify(arr, i, n, k);
 	} else  return ;
 
+
+}
+
+void heapSort(int arr[], int n, int k) {
+	/* function to sort the max-heap*/
+
+	int len = n;
+
+	while(len > 1) {
+
+		int temp = arr[0];
+		arr[0] = arr[len-1];
+		arr[len-1] = temp;
+
+		len--;
+
+		max_Heapify(arr, 0, len, k);
+
+	}
 
 }
